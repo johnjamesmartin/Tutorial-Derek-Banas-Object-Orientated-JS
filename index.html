@@ -71,6 +71,33 @@
 
    document.write('Are they equal?: ' + (person1 === person2) + '<br/>');
 
+
+   /* 6. Prototypes: */
+
+   function getSum(num1, num2) {
+       return num1 + num2;
+   }
+
+   document.write('Num of arguments ' + getSum.length + '<br/>');
+
+   function Mammal(name) {
+       this.name = name;
+       this.getInfo = function() {
+           return 'The mammal\'s name is ' + this.name;
+       }
+   }
+
+
+   /* 7. Adding properties to objects: */
+
+   Mammal.prototype.sound = 'grrr!';
+   Mammal.prototype.makeSound = function() {
+       return this.name + ' says ' + this.sound;
+   }
+
+   var grover = new Mammal('Grover');
+   document.write(grover.makeSound() + '<br/>');
+   
 </script>
 </body>
 </html>
