@@ -8,10 +8,54 @@
 <script type="text/javascript">
 
 /* Normally I decouple JavaScript and HTML (use external JS files),
-   but for quickness of tutorial, I'll code here: */
+   but for quickness of tutorial, I'll code here: 
+   --------------------------------------------------------------*/
 
+/* 1. Basic object: */
+
+   var customer = {
+       name: 'Tom Smith',
+       speak: function() {
+           return 'My name is ' + this.name;
+       },
+
+       /* 2. Object within object: */
+
+       address: {
+           street: '123 Main St',
+           city: 'Pittsburgh',
+           state: 'PA'
+       }
+   };
+
+   /* We can read and print properties from objects like so: */
+
+   document.write(customer.speak() + '<br/>');
+   document.write(customer.name + ' lives at ' + customer.address.street + '<br/>');
+
+   /* We can add properties to objects like so: */
+
+   customer.address.country = 'US';
+
+   document.write(customer.address.country + '<br/>');
+
+
+   /* 3. Constructor function */
+
+   function Person(name, street) {
+       this.name = name;
+       this.street = street;
+       this.info = function() {
+           return 'My name is ' + this.name + ' and I live on ' + this.street;
+       }
+   }
+
+   var bobSmith = new Person('Bob Smith', '234 Main Street');
+   document.write(bobSmith.info() + '<br/>');
+
+   /* 4. Instance of: */
    
-
+   document.write('Bob is a Person: ' + (bobSmith instanceof Person) + '<br/>');
 
 </script>
 </body>
