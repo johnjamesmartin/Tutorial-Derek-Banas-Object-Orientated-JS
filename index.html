@@ -187,9 +187,8 @@
     }
 
     Object.__defineGetter__.call(Coordinates.prototype, "getCoords", function() {
-            return "Lat : " + this.latitude + " Long: " + this.longitude;
-        });
-    };
+        return "Lat : " + this.latitude + " Long: " + this.longitude;
+    });
 
     Object.__defineSetter__.call(Coordinates.prototype, "setCoords", function(coords){
         var parts = coords.toString().split(", ");
