@@ -128,6 +128,32 @@
    document.write('3 in array?: '+ sampArray.inArray(3) + '<br/>');
 
 
+   /* 11. Private properties: */
+
+   function SecretCode() {
+       var secretNum = 78;
+
+       this.guessNum =  function(num) {
+           if (num > secretNum) {
+               return 'No. Go lower';
+           } else if (num < secretNum) {
+               return 'No. Go higher';
+           } else {
+               return 'You guessed it!';
+           }
+       }
+   }
+
+   var secret = new SecretCode();
+
+   document.write('Value of secret number: ' + secret.secretNumber + '<br/>');
+   document.write('Is 70 the number?: ' + secret.guessNum(70) + '<br/>');
+
+   SecretCode.prototype.getSecret = function() {
+       return this.secretNum;
+   }
+
+   document.write('Value of secret number: ' + secret.getSecret() + '<br/>');
 
 </script>
 </body>
