@@ -111,6 +111,18 @@
    document.write('Name property of grover?: ' + grover.hasOwnProperty('name') + '<br/>');
    document.write('Sound property of grover?: ' + grover.hasOwnProperty('sound') + '<br/>');
 
+
+   /* Add additional functions to built-in JS objects: */
+
+   Array.prototype.inArray = function inArray() {
+       for (i = 0; i < this.length; i++) {
+           if (this[i] === value) {
+               return true;
+           }
+       }
+       return false;
+   }
+
 </script>
 </body>
 </html>
