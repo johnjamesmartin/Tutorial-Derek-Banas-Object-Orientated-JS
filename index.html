@@ -97,7 +97,20 @@
 
    var grover = new Mammal('Grover');
    document.write(grover.makeSound() + '<br/>');
-   
+
+
+   /* 8. List properties of an object: */
+
+   for (var prop in grover) {
+       document.write(prop + ': ' + grover[prop] + '<br/>');
+   }
+
+
+   /* 9. hasOwnProperty: */
+
+   document.write('Name property of grover?: ' + grover.hasOwnProperty('name') + '<br/>');
+   document.write('Sound property of grover?: ' + grover.hasOwnProperty('sound') + '<br/>');
+
 </script>
 </body>
 </html>
