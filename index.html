@@ -54,8 +54,22 @@
    document.write(bobSmith.info() + '<br/>');
 
    /* 4. Instance of: */
+
+   document.write('Bob is a Person?: ' + (bobSmith instanceof Person) + '<br/>');
+
+   /* 5. Pass object to function: */
+
+   function changeName(person) {
+       person.name = 'Sue Smith';
+   }
+
+   changeName(bobSmith);
+   document.write('Bob became: ' + bobSmith.name + '<br/>');
    
-   document.write('Bob is a Person: ' + (bobSmith instanceof Person) + '<br/>');
+   var person1 = new Person('Paul', '123 Main');
+   var person2 = new Person('Paul', '123 Main');
+
+   document.write('Are they equal?: ' + (person1 === person2) + '<br/>');
 
 </script>
 </body>
