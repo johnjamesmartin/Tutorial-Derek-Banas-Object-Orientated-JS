@@ -461,7 +461,51 @@
     document.write('Our hero is ' + derekHero.name + '<br/>');
 
     var paulHero = Hero('Paul');
-    document.write('Our hero is ' + Paul.name + '<br/>');
+    document.write('Our hero is ' + paulHero.name + '<br/>');
+
+
+    /* 19. Factory pattern: */
+
+    /* Factory patterns can be used to create different objects on request: */
+
+    function Sword(desc) {
+        this.weaponType = 'sword';
+        this.metal = desc.metal || 'steel';
+        this.style = desc.style || 'longsword';
+        this.hasMagic = desc.hasMagic || false;
+    }
+
+    function Bow(desc) {
+        this.weaponType = 'bow';
+        this.material = desc.material || 'wood';
+        this.style = desc.style || 'longbow';
+        this.hasMagic = desc.hasMagic || false;
+    }
+
+    function WeaponFactory() {};
+
+    WeaponFactory.prototype.makeWeapon = function(desc) {
+        var weaponClass = null;
+        if (desc.weaponType === 'sword') {
+            weaponClass = Sword;
+        } else if (desc.weaponType === 'bow') {
+            weaponClass = Bow;
+        } else {
+            return false;
+        }
+        return new weaponClass(desc)
+    }
+
+    var myWeaponFactory = new WeaponFactory();
+    var bladeFist = myWeaponFactory.makeWeapon({
+        weaponType: 'sword',
+        metal: 'dark iron',
+        style: 'scythe',
+        hasMagic: true
+    });
+
+    document.write(bladeFist.weaponType.split('')[0].toUpperCase() + bladeFist.weaponType.substr(1, bladeFist.weaponType.length) + ' of type "' + bladeFist.style + '" was crafted from ' + bladeFist.metal + '<br/>');
+
 
 </script>
 </body>
