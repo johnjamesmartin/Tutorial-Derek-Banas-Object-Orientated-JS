@@ -303,10 +303,30 @@
     Rat.prototype.constructor = Rat;
 
     var caneRat = new Rat();
-    
+
     document.write(caneRat.toString() + '<br/>');
 
 
+    /* 15. Intermediate function inheritance: */
+
+    function extend(Child, Parent) {
+        var Temp = function() {};
+
+        Temp.prototype = Parent.prototype;
+        Child.prototype = new Temp();
+        Child.prototype.constructor = Child;
+    }
+
+    function Deer() {
+        this.name = 'Deer';
+        this.sound = 'snort';
+    }
+
+    extend(Deer, Animal);
+
+    var elk = new Deer();
+
+    document.write(elk.getSound() + '<br/>')
 
 </script>
 </body>
