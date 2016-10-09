@@ -230,7 +230,7 @@
 
     var Circle = function(radius) {
         this._radius = radius;
-    }
+    };
 
     Circle.prototype = {
         set radius(radius) {
@@ -242,7 +242,7 @@
         get area() {
             return Math.PI * (this._radius * this._radius);
         }
-    }
+    };
 
     var circ = new Circle(10);
     circ.radius = 15;
@@ -276,7 +276,6 @@
 
     document.write(arcticWolf.toString() + '<br/>');
     document.write('Is Wolf instance of Animal?: ' + (arcticWolf instanceof Animal) + '<br/>');
-
 
     Animal.prototype.sound = 'grrr!';
     Animal.prototype.getSound = function() {
@@ -360,6 +359,91 @@
     document.write(jeep.drive() + '<br/>');
     document.write(jeep.stop() + '<br/>');
 
+
+    /* 17. ECMAScript 6: */
+
+    /* ECMAScript 5 way: */
+
+    var addStuff = {
+        sum: function(num1, num2) {
+            return num1 + num2;
+        }
+    };
+
+    document.write('1 + 2 = ' + addStuff.sum(1,2) + '<br/>');
+
+    /* ECMAScript 6 way: */
+
+    var addStuff = {
+        sum(num1, num2) {
+            return num1 + num2;
+        }
+    };
+
+    document.write(`1 + 2 = ${addStuff.sum(1,2)}<br/>`);
+
+
+    /* ECMAScript 5 way: */
+
+    var Point = function(xPos, yPos) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+    };
+
+    Point.prototype.getPos = function() {
+        return 'X: ' + this.xPos + ' Y: ' + this.yPos;
+    }
+
+    var point = new Point(100, 200);
+    document.write('Point pos: ' + point.getPos() + '<br/>');
+
+    
+    /* ECMAScript 6 way: */
+
+    class Point2 {
+        constructor(xPos, yPos) {
+            this.xPos = xPos;
+            this.yPos = yPos;
+        }
+        getPos() {
+            return 'X: ' + this.xPos + ' Y: ' + this.yPos;
+        }
+    }
+
+    var point = new Point2(100, 200);
+    document.write('Point pos: ' + point.getPos() + '<br/>');
+
+
+    class Animal2 {
+        constructor(name) {
+            this.name = name;
+        }
+        toString() {
+            return 'Animal is named: ' + this.name;
+        }
+        static getAnimals() {
+            return new Animal2('No name');
+        }
+    }
+
+    class Dog extends Animal2 {
+        constructor(name, owner) {
+            super(name);
+            this.owner = owner;
+        }
+        toString() {
+            return super.toString() + '<br/>Dog is named ' + this.name;
+        }
+    }
+
+    var rover = new Dog('Rover', 'Paul');
+
+    document.write(rover.name + ' is owned by ' + rover.owner + '<br/>');
+    document.write(rover.toString() + '<br/>');
+
+    var bowser = Animal2.getAnimal();
+
+    document.write('Bowser info: ' + bowser.toString() + '<br/>');
 
 </script>
 </body>
