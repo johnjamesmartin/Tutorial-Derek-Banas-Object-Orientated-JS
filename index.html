@@ -507,7 +507,7 @@
     document.write(bladeFist.weaponType.split('')[0].toUpperCase() + bladeFist.weaponType.substr(1, bladeFist.weaponType.length) + ' of type "' + bladeFist.style + '" was crafted from ' + bladeFist.metal + '<br/>');
 
 
-    /* 19. Decorator pattern: */
+    /* 20. Decorator pattern: */
 
     /* Decorator patterns can be used to alter objects at run-time: */
 
@@ -528,6 +528,59 @@
     ExtraCheese(myPizza);
 
     document.write('Cost of pizza: $' + myPizza.price + '<br/>');
+
+
+    /* 21. Observer pattern: */
+
+    /* Observer patterns use a single object to notify many other objects (i.e. observers) 
+       when a state change occurs: */
+
+    var Observable = function() {
+        this.subscribers = [];
+    }
+
+    Observable.prototype = {
+        subscribe: function(subscriber) {
+            this.subscribers.push(subscriber);
+        },
+        unsubscribe: function(unsubscriber) {
+            for (var i = 0; i < this.subscribers.length; i++) {
+                if (this.subscribers[i] == unsubscriber) {
+                    this.subscribers.splice(i, 1);
+                    return unsubscriber.name;
+                }
+            }
+        },
+        publish: function(data) {
+            for (var i = 0; i < this.subscribers.length; i++) {
+                this.subscribers[i].receiveData(data);
+            }
+        }
+    };
+
+    var AppleInc = {
+        name: 'AppleInc',
+        receiveData: function(data) {
+            document.write(this.name + ' received your info: ' + data + '<br/>');
+        }
+    };
+
+    var GoogleInc = {
+        name: 'GoogleInc',
+        receiveData: function(data) {
+            document.write(this.name + ' received your info: ' + data + '<br/>');
+        }
+    };
+
+    observable = new Observable();
+    observable.subscribe(AppleInc);
+    observable.subscribe(GoogleInc);
+    
+    observable.publish('IBM at $145.30');
+
+    document.write(observable.unsubscribe(AppleInc) + ' unsubscribed<br/>');
+
+    observable.publish('IBM at $144.30');
 
 </script>
 </body>
