@@ -441,9 +441,27 @@
     document.write(rover.name + ' is owned by ' + rover.owner + '<br/>');
     document.write(rover.toString() + '<br/>');
 
-    var bowser = Animal2.getAnimal();
 
-    document.write('Bowser info: ' + bowser.toString() + '<br/>');
+    /* 18. Singleton pattern: */
+
+    /* Singletons are used to ensure only one object is created of a specific type: */
+
+    function Hero(name) {
+        if (typeof Hero.instance === 'object') {
+            return Hero.instance;
+        }
+        this.name = name;
+        Hero.instance = this;
+        return this;
+    }
+
+    /* We can try creating multiple heroes, but only the first one will ever be created: */
+
+    var derekHero = Hero('Derek');
+    document.write('Our hero is ' + derekHero.name + '<br/>');
+
+    var paulHero = Hero('Paul');
+    document.write('Our hero is ' + Paul.name + '<br/>');
 
 </script>
 </body>
