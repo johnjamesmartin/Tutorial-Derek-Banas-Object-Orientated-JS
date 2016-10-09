@@ -507,6 +507,28 @@
     document.write(bladeFist.weaponType.split('')[0].toUpperCase() + bladeFist.weaponType.substr(1, bladeFist.weaponType.length) + ' of type "' + bladeFist.style + '" was crafted from ' + bladeFist.metal + '<br/>');
 
 
+    /* 19. Decorator pattern: */
+
+    /* Decorator patterns can be used to alter objects at run-time: */
+
+    function Pizza(price) {
+        this.price = price || 10;
+    }
+
+    Pizza.prototype.getPrice = function() {
+        return this.price;
+    }
+
+    function ExtraCheese(pizza) {
+        var prevPrice = pizza.price;
+        pizza.price = prevPrice + 1;
+    }
+
+    var myPizza = new Pizza(10);
+    ExtraCheese(myPizza);
+
+    document.write('Cost of pizza: $' + myPizza.price + '<br/>');
+
 </script>
 </body>
 </html>
